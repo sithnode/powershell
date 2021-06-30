@@ -2,13 +2,12 @@
 
 $Counter = 1
 do{
-
-  $folderPath = 'F:\SQL\Input\Assessor_Parcels_Data_-_2018.csv'
+   $folder = 'C:\Users\crims\Desktop\'
+   $file = 'ca_bls_age65_hotzipcodesSoCal_dedupe'
+  $folderPath = "$folder$file.csv"
   $FileRows = 250000
   $SkipCount = ($Counter -1)*$FileRows 
-  $folderPathDest = 'F:\SQL\Output\Partitioned_Files\Assessor_Output' + $Counter + '.csv'
+  $folderPathDest = "$folder$fi" + '_' + $Counter + '.csv'
   Import-Csv $folderPath | Select -First $FileRows -Skip $SkipCount | Export-Csv -Path $folderPathDest –NoTypeInformation
   $Counter = $Counter +1
   } until ($Counter -eq 10)
-  
-  
